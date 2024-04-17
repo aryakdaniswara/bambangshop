@@ -69,7 +69,7 @@ You can install Postman via this website: https://www.postman.com/downloads/
     -   [x] Commit: `Implement notify function in Notification service to notify each Subscriber.`
     -   [x] Commit: `Implement publish function in Program service and Program controller.`
     -   [x] Commit: `Edit Product service methods to call notify after create/delete.`
-    -   [ ] Write answers of your learning module's "Reflection Publisher-3" questions in this README.
+    -   [x] Write answers of your learning module's "Reflection Publisher-3" questions in this README.
 
 ## Your Reflections
 This is the place for you to write reflections:
@@ -104,3 +104,14 @@ Jikia kita hanya menggunakan Model dalam kerangka MVC, dan tidak melakukan pemis
 Postman adalah tool yang dapat digunakan untuk melakukan pengujian API. Postman dapat membuat dan mengirim Request HTTP untuk menguji berbagai jenis fungsi program. Postman juga dapat menganalisis repon yang diberikan server secara detail yang dapat membantu kita untuk memverifikasi fungsionalitas program. Salah satu fitur unik yang terdapat di Postman adalah Environments yang dapat mengatur Postman untuk melakukan pengujian di berbagai environments yang ingin kita ujikan.
 
 #### Reflection Publisher-3
+1. Observer Pattern has two variations: Push model (publisher pushes data to subscribers) and Pull model (subscribers pull data from publisher). In this tutorial case, which variation of Observer Pattern that we use?
+
+Pada kasus ini kita menggunakan Push Model untuk sistem notifikasi. Sistem ini diimplementasikan pada Notification Service yang mengirimkan notifikasi pada Subscriber yang berlanggpan pada suatu produk tertentu terhadap perubahan, penghapusan, atau pembuatan produk. NotificationService mengiterasi daftar Subscriber dan mengirimkan notifikasi ketika ada perubahan sehingga informasi dapat disampaikan sevara otomatis.
+
+2. What are the advantages and disadvantages of using the other variation of Observer Pattern for this tutorial case? (example: if you answer Q1 with Push, then imagine if we used Pull)
+
+Jika kita menggunakan Pull Model pada NotificationService, keunggulan yang akan kita dapat adalah akses informasi yang dapat dilakukan tanpa berbagi data pribadi dengan Publisher. Dalam model ini, Subscriber juga dapat mengontrol informasi apa saja yang ingin diakses dan kapan, sesuai dengan yang diinginkan. Akan tetapi, model ini memiliki kekurangan pada kecepatan dan performanya. Hal ini disebabkan karena SUbscriber akan secara aktif memeriksa perubahan secara terus menerus, yang meningkatkan traffic. Keputusan pengambilan data juga berpindah ke Subscriber sehingga Subscriber perlu membuat keputusan yang tepat tentang kapan dan apa data yang akan diambil.
+
+3. Explain what will happen to the program if we decide to not use multi-threading in the notification process.
+
+Jika kita tidak menggunakan multi-threading pada proses notifikasi, pengiriman notifikasi akan terjadi secara berurutan, satu per satu. Hal ini dapat memperlambat kualitas penggunaan karena pengguna dapat mendapatkan notifikasi yang sangat terlambat karena perlu menyelesaikan urutan pembagian notifikasi yang ada. Hal ini dapat terjadi terutama pada jumlah subscriber dengan notifikasi yang banya di mana terjadi penyumbatan pada proses pengiriman notifikasi.
