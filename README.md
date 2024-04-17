@@ -63,7 +63,7 @@ You can install Postman via this website: https://www.postman.com/downloads/
     -   [x] Commit: `Implement subscribe function in Notification controller.`
     -   [x] Commit: `Implement unsubscribe function in Notification service.`
     -   [x] Commit: `Implement unsubscribe function in Notification controller.`
-    -   [ ] Write answers of your learning module's "Reflection Publisher-2" questions in this README.
+    -   [x] Write answers of your learning module's "Reflection Publisher-2" questions in this README.
 -   **STAGE 3: Implement notification mechanism**
     -   [ ] Commit: `Implement update method in Subscriber model to send notification HTTP requests.`
     -   [ ] Commit: `Implement notify function in Notification service to notify each Subscriber.`
@@ -91,5 +91,16 @@ Sebenarnya pengguna Vec (list) sudah cukup dalam kasus ini karena masih bisa men
 Penggunaan DashMap untuk thread-safety pada kaus ini sudah tepat. Hal ini dikarenakan DashMap dari library eksternal dibutuhkan untuk membuat HashMap thread-safe di Rust. Thread-safety diperlukan untuk mencegah adanyarace condition antara suatu thread dengan thread lain. Sementara, Singleton Pattern kurang cocok. Singleton pattern tidak menjamin thread-safety secara inheren. Singleton justeri seringkali membutuhkan modifikasi tambahan untuk memastikan thread-safety.
 
 #### Reflection Publisher-2
+1. In the Model-View Controller (MVC) compound pattern, there is no “Service” and “Repository”. Model in MVC covers both data storage and business logic. Explain based on your understanding of design principles, why we need to separate “Service” and “Repository” from a Model?
+
+Berdasarkan prinsip SOLID, salah satunya adalah Single Responsibility Principle (SRP), prinsip ini mendorong pemisahan antara Service dan Repository. Service menangani logika bisnis yang kompleks, dan Repository mengurusi penyimpanan dan pengambilan data. Pemisahan ini membuat kode lebih terstruktur dan mudah dipelihara. Pemisahan ini juga menunjukan adanya tanggung jawab yang berbeda dari tiap komponen sehingga kita dapat memisahkannya dengan lebih jelas. Pengelolaan dan pengembangannya pun dapat sesuai dengan tiap komponen yang ingin dikembangkan, bukan secara keseluruhan.
+
+2. What happens if we only use the Model? Explain your imagination on how the interactions between each model (Program, Subscriber, Notification) affect the code complexity for each model?
+
+Jikia kita hanya menggunakan Model dalam kerangka MVC, dan tidak melakukan pemisahan antara Service dan Repository, tanggung jawab model akan menjadi terlalu besar. Akibatnya, model bisa menjadi terlalu kompleks dan sulit untuk dipahami dan dipelihara. Pengetesan juga akan menjadi lebih sulit karena logika bisnis yang ada dalam model tercampur dengan penyimpanan data yang ada.
+
+3. Have you explored more about Postman? Tell us how this tool helps you to test your current work. You might want to also list which features in Postman you are interested in or feel like it is helpful to help your Group Project or any of your future software engineering projects
+
+Postman adalah tool yang dapat digunakan untuk melakukan pengujian API. Postman dapat membuat dan mengirim Request HTTP untuk menguji berbagai jenis fungsi program. Postman juga dapat menganalisis repon yang diberikan server secara detail yang dapat membantu kita untuk memverifikasi fungsionalitas program. Salah satu fitur unik yang terdapat di Postman adalah Environments yang dapat mengatur Postman untuk melakukan pengujian di berbagai environments yang ingin kita ujikan.
 
 #### Reflection Publisher-3
